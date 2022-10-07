@@ -1,4 +1,4 @@
-# poetry-base-image
+# docker-base-image
 
 See https://hub.docker.com/repository/docker/samidarko/poetry-base-image for usage
 

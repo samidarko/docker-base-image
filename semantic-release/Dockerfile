@@ -2,9 +2,11 @@ FROM node:16-buster-slim
 
 RUN apt-get update \
     && apt-get upgrade -y \
-    && apt-get install -y --no-install-recommends git-core ca-certificates
+    && apt-get install -y --no-install-recommends git-core ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN npm install -g semantic-release \
+
+RUN npm install --location=global semantic-release \
     @semantic-release/git \
     @semantic-release/gitlab \
     @semantic-release/changelog \
@@ -12,8 +14,5 @@ RUN npm install -g semantic-release \
     @semantic-release/commit-analyzer \
     @semantic-release/release-notes-generator
 
-COPY entrypoint.sh ./entrypoint.sh
+CMD ["bash"]
 
-ENTRYPOINT ["./entrypoint.sh"]
-
-#npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.

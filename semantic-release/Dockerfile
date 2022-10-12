@@ -1,17 +1,27 @@
-FROM node:16-buster-slim
+FROM docker:20-cli
 
-RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y --no-install-recommends git-core ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
+WORKDIR /opt/app
 
+ENV PATH="/opt/app/node_modules/.bin:${PATH}"
+
+RUN apk update \
+    && apk upgrade \
+    && apk add --no-cache bash \
+    ca-certificates \
+    git \
+    nodejs \
+    npm \
+    && rm -rf /var/cache/apt/*
 
 RUN npm install --location=global semantic-release \
     @semantic-release/git \
     @semantic-release/gitlab \
     @semantic-release/changelog \
-    @semantic-release-plus/docker \
-    conventional-changelog-conventionalcommits
+    conventional-changelog-conventionalcommits \
+    @semantic-release/commit-analyzer \
+    @semantic-release/release-notes-generator \
+    @semantic-release-plus/docker
 
+ENTRYPOINT []
 CMD ["bash"]
 

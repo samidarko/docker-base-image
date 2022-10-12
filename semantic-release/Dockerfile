@@ -10,9 +10,8 @@ RUN npm install --location=global semantic-release \
     @semantic-release/git \
     @semantic-release/gitlab \
     @semantic-release/changelog \
-    conventional-changelog-conventionalcommits \
-    @semantic-release/commit-analyzer \
-    @semantic-release/release-notes-generator
+    @semantic-release-plus/docker \
+    conventional-changelog-conventionalcommits
 
 CMD ["bash"]
 

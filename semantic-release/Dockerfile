@@ -11,6 +11,9 @@ RUN apk update \
     git \
     nodejs \
     npm \
+    python3 \
+    py3-pip \
+    && pip install toml-cli \
     && rm -rf /var/cache/apt/*
 
 RUN npm install --location=global semantic-release \
@@ -20,6 +23,7 @@ RUN npm install --location=global semantic-release \
     conventional-changelog-conventionalcommits \
     @semantic-release/commit-analyzer \
     @semantic-release/release-notes-generator \
+    @semantic-release/exec \
     @semantic-release-plus/docker
 
 ENTRYPOINT []

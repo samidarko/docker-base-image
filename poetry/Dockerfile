@@ -15,5 +15,5 @@ RUN apt-get update \
     && curl -sSL https://install.python-poetry.org | python3 - \
     && python -m venv venv
 
-ENTRYPOINT ["bash"]
+ENTRYPOINT []
 

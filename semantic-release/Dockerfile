@@ -26,6 +26,8 @@ RUN npm install --location=global semantic-release \
     @semantic-release/exec \
     @semantic-release-plus/docker
 
+COPY build_docker_release.sh /build_docker_release.sh
+COPY build_docker_release.sh /opt/app/build_docker_release.sh
+
 ENTRYPOINT []
-CMD ["bash"]
 
